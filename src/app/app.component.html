@@ -1,0 +1,182 @@
+<ion-app>
+  <ion-split-pane contentId="mainContent">
+    <ion-menu menu-id="menu1" contentId="mainContent" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>Welcome {{Name}}</ion-list-header>
+          <!-- <ion-note>hi@ionicframework.com</ion-note> -->
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" *ngIf="p.status"
+              lines="none" detail="false" [class.selected]="selectedIndex == i">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none">
+              <ion-icon slot="start" src="assets/translation.svg"></ion-icon>
+  
+              <ion-label>{{'Select Language'|translate}}</ion-label>
+              <ion-select #S placeholder="Select One" [(ngModel)]="selectedLanguage"
+                (ionChange)="languageChanged(S.value)">
+  
+                <ion-select-option *ngFor="let p of lang" [value]="p.id">{{p.name | translate}}</ion-select-option>
+                <!-- <ion-select-option value="hi">{{'हिन्दी' | translate}}</ion-select-option>
+                <ion-select-option value="gu">{{'ગુજરાતી' | translate}}</ion-select-option> -->
+              </ion-select>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <!-- <ion-item *ngFor="let label of labels" lines="none">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>{{ label }}</ion-label>
+          </ion-item> -->
+
+      </ion-content>
+      <ion-footer>
+
+        <ion-list>
+          <ion-menu-toggle auto-hide="false">
+
+            <!-- <ion-list-header>Other</ion-list-header> -->
+            <ion-item (click)="Login()" color="primary" lines="none" *ngIf="!showBtnLogin" detail="false">
+              <ion-icon slot="start" color="light" name="log-in-outline"></ion-icon>
+              <ion-label color="light">Log In</ion-label>
+            </ion-item>
+            <ion-item color="primary" *ngIf="showBtnLogin" lines="none" (click)="logout()">
+              <ion-icon slot="start" name="log-out-outline" color="light"></ion-icon>
+              <ion-label color="light"> Log Out</ion-label>
+            </ion-item>
+
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-footer>
+    </ion-menu>
+
+    <!-- For Shop Filter Side Menu  -->
+    <ion-menu menu-id="menuAdmin" contentId="mainContent" type="overlay" side="end">
+      <ion-header tappable>
+        <ion-menu-toggle menu="menuAdmin" auto-hide="false" no-padding>
+          <ion-toolbar color="light">
+            <ion-buttons slot="start">
+              <ion-button fill="clear">
+                <ion-icon color="primary" slot="icon-only" class="usd-icon" name="close"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            <ion-title color="primary">Filter</ion-title>
+
+            <ion-buttons slot="end">
+              <ion-button fill="clear" (click)="Reset()">
+                <ion-label color="primary">
+                  Reset
+                </ion-label>
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-menu-toggle>
+      </ion-header>
+      <ion-content>
+
+        <ion-item (click)="expandItemCategory(item)" *ngFor="let item of itemsCategory" no-padding
+        >
+          <ion-grid no-padding>
+            <ion-row no-padding>
+              <ion-col class="col-text" align-self-center size="10">
+                <p class="price-heading"> By Category </p>
+              </ion-col>
+              <ion-col style="align-self: center;" size="2">
+                <ion-icon name="add" *ngIf="!visibleCategory"></ion-icon>
+                <ion-icon name="remove" *ngIf="visibleCategory"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-menu-toggle auto-hide="false" no-padding>
+              <app-menu-component expandHeight="700px" [expanded]="item.expanded" no-padding>
+                <ion-item class="item-inner-list" lines="none" *ngFor="let list of Categories;let i = index" style="height: 100px;">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col style="align-self: center;" size="2">
+                        <ion-checkbox (ionChange)="checkEvent(list.id,list.category_name)"></ion-checkbox>
+                      </ion-col>
+                      <ion-col class="col-text" style="align-self: center; " size="10" >
+                        <p>{{list.category_name}}</p>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-item>
+              </app-menu-component>
+            </ion-menu-toggle>
+          </ion-grid>
+        </ion-item>
+
+        <ion-item (click)="expandItemBrand(item)" *ngFor="let item of itemsBrand" no-padding>
+          <ion-grid no-padding>
+            <ion-row no-padding>
+              <ion-col class="col-text" align-self-center size="10">
+                <p class="price-heading"> By Brand </p>
+              </ion-col>
+              <ion-col style="align-self: center;" size="2">
+                <ion-icon name="add" *ngIf="!visibleBrand"></ion-icon>
+                <ion-icon name="remove" *ngIf="visibleBrand"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-menu-toggle auto-hide="false" no-padding>
+              <app-menu-component expandHeight="700px" [expanded]="item.expanded" no-padding>
+                <ion-item class="item-inner-list" lines="none" *ngFor="let bl of Brand;let i = index">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col style="align-self: center;" size="2">
+                        <ion-checkbox (ionChange)="checkEventBrand(bl.id,bl.brand_name)"></ion-checkbox>
+                      </ion-col>
+                      <ion-col class="col-text" style="align-self: center;" size="10">
+                        <p>{{bl.brand_name}}</p>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-item>
+              </app-menu-component>
+            </ion-menu-toggle>
+          </ion-grid>
+        </ion-item>
+
+
+        <ion-item (click)="expandItemPrice(item)" *ngFor="let item of itemsPrice" no-padding>
+          <ion-grid no-padding>
+            <ion-row no-padding>
+              <ion-col class="col-text" align-self-center size="10">
+                <p class="price-heading"> By Price </p>
+              </ion-col>
+              <ion-col style="align-self: center;" size="2">
+                <ion-icon name="add" *ngIf="!visiblePrice"></ion-icon>
+                <ion-icon name="remove" *ngIf="visiblePrice"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-menu-toggle auto-hide="false" no-padding>
+              <app-menu-component expandHeight="700px" [expanded]="item.expanded" no-padding>
+                <ion-item class="item-inner-list" lines="none" *ngFor="let list of price_filter;let i = index">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col style="align-self: center;" size="2">
+                        <ion-checkbox [checked]="selected" (ionChange)="checkEventPrice(list.min,list.max, list.id)">
+                        </ion-checkbox>
+                      </ion-col>
+                      <ion-col class="col-text" style="align-self: center;" size="10">
+                        <p>{{list.min}} - {{list.max}}</p>
+
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-item>
+              </app-menu-component>
+            </ion-menu-toggle>
+          </ion-grid>
+        </ion-item>
+      </ion-content>
+    </ion-menu>
+
+
+    <ion-router-outlet id="mainContent"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

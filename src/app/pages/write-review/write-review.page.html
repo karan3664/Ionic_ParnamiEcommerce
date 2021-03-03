@@ -1,0 +1,47 @@
+<ion-header tappable>
+  <ion-toolbar>
+
+    <ion-title color="primary" class="ecom-title">Write a review</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon color="primary" slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding class="content">
+  <h4>Comment about this product</h4>
+  <ion-grid no-padding>
+    <ion-row no-padding>
+      <ion-col size="6" no-padding>
+        <h5>Your Rating:</h5>
+      </ion-col>
+      <ion-col size="6" no-padding>
+        <ion-rating [(ngModel)]="rate" size="default" (ngModelChange)="onModelChange($event)">
+        </ion-rating>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <form>
+    <ion-item>
+      <ion-input type="text" placeholder="Review Title" name="review_title" [(ngModel)]="formData.review_title"
+        required>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Name" name="nick_name" [(ngModel)]="formData.nick_name" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-textarea rows="17" placeholder="Enter a description" name="your_review" [(ngModel)]="formData.your_review"
+        required>
+      </ion-textarea>
+    </ion-item>
+  </form>
+  <ion-button expand="full" (click)="PostReview()">
+    Post Comment
+  </ion-button>
+
+</ion-content>

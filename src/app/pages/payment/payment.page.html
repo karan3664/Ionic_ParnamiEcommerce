@@ -1,0 +1,39 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary">Payment Options</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="header">
+    <ion-label class="title">Payment Options</ion-label>
+  </div>
+  <ion-item (click)="openRazorpay()">
+    <ion-thumbnail slot="start">
+      <img src="assets/jaanu.png" />
+    </ion-thumbnail>
+    <ion-label>Pay with Razorpay</ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <!-- <ion-item (click)="payWithCredit()">
+    <ion-thumbnail slot="start">
+      <img src="assets/payment.svg" />
+    </ion-thumbnail>
+    <ion-label>Pay with Credit</ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item> -->
+
+  <ion-item (click)="placeOrder()">
+    <ion-thumbnail slot="start">
+      <img src="assets/cod.png" />
+    </ion-thumbnail>
+    <ion-label>Cash on Delivery</ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+
+</ion-content>

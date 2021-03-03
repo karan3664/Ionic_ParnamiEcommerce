@@ -1,0 +1,49 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "com.razorpay.cordova": {
+      "PACKAGE_NAME": "com.karanbrahmaxatriya.sales_parnami"
+    },
+    "cordova-plugin-advanced-http": {
+      "PACKAGE_NAME": "com.karanbrahmaxatriya.sales_parnami"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.karanbrahmaxatriya.sales_parnami"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.karanbrahmaxatriya.sales_parnami"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.karanbrahmaxatriya.sales_parnami"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.karanbrahmaxatriya.sales_parnami"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.karanbrahmaxatriya.sales_parnami"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.karanbrahmaxatriya.sales_parnami"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.karanbrahmaxatriya.sales_parnami"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.karanbrahmaxatriya.sales_parnami"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.karanbrahmaxatriya.sales_parnami"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.karanbrahmaxatriya.sales_parnami"
+    }
+  }
+}

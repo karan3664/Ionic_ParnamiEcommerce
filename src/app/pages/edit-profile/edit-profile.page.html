@@ -1,0 +1,50 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start" color="primary">
+      <ion-button fill="clear" routerLink="/my-account" routerDirection="backward">
+        <ion-icon slot="icon-only" src="assets/custom-icon-tc-shop/back.svg"></ion-icon>
+      </ion-button>
+      <!-- <ion-back-button mode="md"></ion-back-button> -->
+    </ion-buttons>
+    <ion-title color="primary">Edit Profile</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item style="margin: 10px;">
+    <ion-label position="stacked" color="dark">Name <ion-text color="danger">*
+      </ion-text>
+    </ion-label>
+    <ion-input type="text" autocomplete="off" placeholder="Name" name="name" color="dark" [(ngModel)]="postData.name"
+      clearInput></ion-input>
+  </ion-item>
+
+
+  <ion-item style="margin: 10px;">
+    <ion-label position="stacked" color="dark">Phone <ion-text color="danger">*
+      </ion-text>
+    </ion-label>
+    <ion-input type="tel" autocomplete="off" maxlength="10" placeholder="Phone" name="phone" color="dark"
+      [(ngModel)]="postData.phone" clearInput></ion-input>
+  </ion-item>
+  <ion-item style="margin: 10px;">
+    <ion-label position="stacked" color="dark">Address <ion-text color="danger">*
+      </ion-text>
+    </ion-label>
+    <ion-input type="text" autocomplete="off" placeholder="Address" name="address" color="dark"
+      [(ngModel)]="postData.address" clearInput></ion-input>
+  </ion-item>
+  <ion-item style="margin: 10px;">
+    <ion-label position="stacked" color="dark">Business Name <ion-text color="danger">*
+      </ion-text>
+    </ion-label>
+    <ion-input type="text" autocomplete="off" placeholder="Business Name" name="business_name" color="dark"
+      [(ngModel)]="postData.business_name" clearInput></ion-input>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-button (click)="UpdateProfile()">Update</ion-button>
+</ion-footer>

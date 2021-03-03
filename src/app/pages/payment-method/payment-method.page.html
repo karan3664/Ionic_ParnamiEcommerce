@@ -1,0 +1,103 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-title color="primary">Dispatch Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/shipping-address" routerDirection="backward">
+        <ion-icon class="back-icon" slot="icon-only" src="assets/custom-icon-tc-shop/back.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="order-content" *ngIf="CartItems">
+
+  <ion-card>
+    <ion-card-header>
+      <h4>Transporter</h4>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item lines="none">
+          <ion-label>Select Transporter</ion-label>
+          <ion-select #C [(ngModel)]="transporter" (ionChange)="TransporterSelect(C.value)" okText="Select"
+            cancelText="Dismiss">
+            <ion-select-option *ngFor="let pp of Transporter" [value]="pp">
+              {{pp.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
+
+  <ion-card>
+    <ion-card-header>
+      <h4>Delivery Option</h4>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item lines="none">
+          <ion-label>Select Delivery <Option></Option>
+          </ion-label>
+          <ion-select #D [(ngModel)]="delivery_option" (ionChange)="DeliveryOption(D.value)" okText="Select"
+            cancelText="Dismiss">
+
+            <ion-select-option value="Godown">Godown</ion-select-option>
+            <ion-select-option value="Door Delivery">Door Delivery</ion-select-option>
+
+
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header>
+      <h4>Freight</h4>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item lines="none">
+          <ion-label>Select Freight <Option></Option>
+          </ion-label>
+          <ion-select #F [(ngModel)]="freight" (ionChange)="Selectfreight(F.value)" okText="Select"
+            cancelText="Dismiss">
+
+            <ion-select-option value="Paid">Paid</ion-select-option>
+            <ion-select-option value="To Pay">To Pay</ion-select-option>
+
+
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card style="height: 150px;">
+    <ion-card-header>
+      <h4>Add Notes</h4>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-input placeholder="Add Notes" type="text" [(ngModel)]="notes" name="notes"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+
+
+</ion-content>
+<ion-footer class="order-footer">
+  <ion-button (click)="goToPaymentOption()">
+    Select Payment Options
+  </ion-button>
+</ion-footer>

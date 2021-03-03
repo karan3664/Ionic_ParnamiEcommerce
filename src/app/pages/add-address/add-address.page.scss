@@ -1,0 +1,29 @@
+ion-input {
+    border: 1px solid var(--ion-color-primary);
+    margin: 10px 0px 10px 0px;
+    padding: 0px;
+    font-size: 18px !important;
+    font-family: "roboto-medium" !important;
+    color: black;
+
+    border-radius: 2px;
+}
+ion-select {
+    border: 1px solid var(--ion-color-primary);
+    margin: 10px 0px 10px 0px;
+    padding: 5px;
+    color: black;
+    font-size: 18px !important;
+    font-family: "roboto-medium" !important;
+
+    border-radius: 2px;
+}
+ion-footer {
+    ion-button {
+        // --background: black;
+        --color: white;
+        margin: 0;
+        width: 100%;
+        --border-radius: 0;
+    }
+}

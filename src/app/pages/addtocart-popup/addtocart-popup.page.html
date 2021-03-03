@@ -1,0 +1,86 @@
+<ion-header tappable>
+  <ion-toolbar>
+    <!-- <ion-title color="primary">Select Package</ion-title> -->
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon color="primary" slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-radio-group (ionChange)="MakeDefault($event)">
+      <ion-item *ngFor="let p of product_packages" class="list">
+
+        <ion-label class="title">
+         1 {{p.package_name}} x {{p.qty}} {{p.unit_name}} x  <span *ngIf="p.discounted_price === null">
+          ₹ {{p.original_unit_price}} =   ₹ {{p.price}}
+         </span>
+         <span *ngIf="p.discounted_price != null">
+          ₹ {{p.original_unit_discounted_price}} =  ₹ {{p.discounted_price}}
+         </span>
+      
+        
+
+          <!-- <br> -->
+          <!-- <p> ₹ {{p.discounted_price}}</p> -->
+          <!-- <span class="name">
+            <div *ngIf="p.discounted_price === null">
+              <p> ₹ {{p.price}}</p>
+            </div>
+            <div *ngIf="p.discounted_price != null">
+              <p> ₹ {{p.price}}</p>
+              <p>  ₹ {{p.discounted_price}}</p>
+            </div>
+          </span> -->
+        </ion-label>
+        <!-- <ion-label class="name"></ion-label> -->
+        <ion-radio name="{{p}}" [value]="p" slot="start" mode="md"></ion-radio>
+
+
+        <!-- <ion-grid>
+          <ion-row>
+            <ion-col size="4" style="text-align: start;">
+              <ion-label class="ion-text-wrap">{{p.package_name}}</ion-label>
+            </ion-col>
+            <ion-col size="4" style="text-align: center;">
+              <ion-label class="ion-text-wrap">x {{p.qty}}</ion-label>
+            </ion-col>
+
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <div *ngIf="p.discounted_price === null">
+                <p><span> MRP. {{p.price}}</span></p>
+              </div>
+              <div *ngIf="p.discounted_price != null">
+                <p><del>MRP. {{p.price}}</del></p>
+                <p><span> MRP. {{p.discounted_price}}</span></p>
+              </div>
+            </ion-col>
+            <ion-col *ngIf="p.discounted_price != null" size="6">
+              <ion-button expand="outline" size="small">
+                <div *ngIf="p.discount_res.dicount_type === 'Percentage'">
+                  <ion-label class="heading_lbl">{{p.discount_res.dicount}} %</ion-label>
+
+                </div>
+                <div *ngIf="p.discount_res.dicount_type != 'Percentage'">
+                  <ion-label class="heading_lbl"> Flat {{p.discount_res.dicount}}</ion-label>
+
+                </div>
+
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+
+        <!-- <ion-radio slot="start" name="{{list}}" [value]="list" mode="md"></ion-radio> -->
+      </ion-item>
+
+
+    </ion-radio-group>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,44 @@
+ion-header {
+    ion-toolbar {
+        --color: white;
+        ion-buttons {
+            ion-icon {
+                font-size: 16px;
+            }
+        }
+    }
+}
+ion-content {
+    h4 {
+        padding-left: 10px;
+    }
+    ion-grid {
+        ion-row {
+            ion-col {
+                h5 {
+                    padding-left: 10px;
+                }
+                ion-icon {
+                    zoom: 1.9;
+                    color: #d9d027;
+                }
+            }
+        }
+    }
+    form {
+        ion-item {
+            --background: #fafafa;
+        }
+    }
+    ion-button {
+        --color: white;
+        width: 100%;
+        margin: 0;
+        border: none;
+    }
+}
+
+ion-rating {
+    --star-color: gray;
+    --star-color-filled: green;
+  }

@@ -1,0 +1,66 @@
+{
+  "_from": "cordova-plugin-fcm-with-dependecy-updated",
+  "_id": "cordova-plugin-fcm-with-dependecy-updated@6.4.3",
+  "_inBundle": false,
+  "_integrity": "sha512-BcJ84qbQ3FrF6FecyxeexYnkiZTl13uNiICSbD1fg9kGpowk7mq6JElxBww9CzMJygXvi82ANxZJQRMFjkzbvg==",
+  "_location": "/cordova-plugin-fcm-with-dependecy-updated",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-fcm-with-dependecy-updated",
+    "name": "cordova-plugin-fcm-with-dependecy-updated",
+    "escapedName": "cordova-plugin-fcm-with-dependecy-updated",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-fcm-with-dependecy-updated/-/cordova-plugin-fcm-with-dependecy-updated-6.4.3.tgz",
+  "_shasum": "ceacfa2c8f8e7e9cc1cb9a1e68885081b942c726",
+  "_spec": "cordova-plugin-fcm-with-dependecy-updated",
+  "_where": "D:\\IONIC Projects\\Parnami Ecommerce",
+  "author": {
+    "name": "André Augusto Tissot"
+  },
+  "bugs": {
+    "url": "https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated/issues"
+  },
+  "bundleDependencies": false,
+  "cordova_name": "Cordova FCM Push Plugin",
+  "deprecated": false,
+  "description": "Google Firebase Cloud Messaging Cordova Push Plugin fork with dependecy updated",
+  "engines": [],
+  "englishdoc": "",
+  "homepage": "https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated#readme",
+  "issue": "",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "notifications",
+    "push",
+    "firebase",
+    "fcm",
+    "ios",
+    "android",
+    "cordova"
+  ],
+  "license": "MIT",
+  "main": "www/FCMPlugin.js",
+  "name": "cordova-plugin-fcm-with-dependecy-updated",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "repo": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated.git"
+  },
+  "typings": "src/FCMPlugin.d.ts",
+  "version": "6.4.3"
+}

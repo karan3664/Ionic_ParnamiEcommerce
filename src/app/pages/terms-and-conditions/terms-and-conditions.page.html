@@ -1,0 +1,15 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-menu-button slot="start">
+      <ion-icon color="primary" name="menu"></ion-icon>
+    </ion-menu-button>
+
+    <ion-title color="primary">Terms & Conditions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding *ngIf="data">
+  <ion-label style="padding: 10px;">
+    {{data}}
+  </ion-label>
+</ion-content>

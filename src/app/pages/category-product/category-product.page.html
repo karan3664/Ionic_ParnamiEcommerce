@@ -1,0 +1,146 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/home" routerDirection="backward">
+        <ion-icon slot="icon-only" src="assets/custom-icon-tc-shop/back.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title color="primary" class="ecom-title" *ngIf="CategoryName != ''">{{ CategoryName }}</ion-title>
+    <ion-title color="primary" class="ecom-title" *ngIf="CategoryName === ''">All Products</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="goToSearchPage()">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="goToCartPage()">
+        <ion-icon class="cart-badge" name="cart-outline"></ion-icon>
+        <ion-badge>{{total_cart}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+  <div>
+    <ion-list lines="none">
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" *ngFor="let item of dummy" style="align-items: center;">
+            <ion-thumbnail>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-list>
+  </div>
+
+  
+
+  <div no-padding  scrollX="true">
+
+    <ion-grid no-padding>
+      <ion-row no-padding>
+        <ion-col size="6" style="text-align: center;" *ngFor="let p of data" no-padding>
+          <!-- <div class="box">
+            <img src="http://parnamib2b.com/public//product_images/{{p.default_image}}"
+              (click)="goToProductDetail(p.id)" />
+            <p>{{p.product_name}}</p>
+            <p>Rs. {{p.price}}</p>
+          </div> -->
+          <ion-card style="margin: 0px; padding: 0px;">
+            <div (click)="goToProductDetail(p.id)" class="dhe">
+
+           
+            <img src="http://parnamib2b.com/public/product_images/{{p.default_image}}" 
+               />
+            <p style="font-weight: bold;">{{p.product_name}}</p>
+            <!-- <p><span> MRP. {{p.price}}</span></p> -->
+            <ion-row>
+              <ion-col size="12">
+                <div *ngIf="p.discounted_price === null">
+                  <p>MRP: ₹ {{p.price}}</p>
+                  <!-- <p><span><del>MRP. {{p.price}}</del> </span></p> -->
+                </div>
+                <div *ngIf="p.discounted_price != null">
+                  <p>MRP: ₹ {{p.price}}</p>
+                  <p>Your Price : ₹ {{p.discounted_price}}</p>
+                </div>
+              </ion-col>
+            
+            </ion-row>
+          </div>
+            <div class="div-recent-btn">
+              <ion-button color="primary"
+                (click)="goToCart(p.id,p.price,p.product_packages, p.discounted_price, p.discount_res)">
+                <ion-label color="light">
+                  Add to cart
+                </ion-label>
+              </ion-button>
+            </div>
+          </ion-card>
+        </ion-col>
+
+
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+</ion-content>
+
+
+
+<ion-footer class="products-footer">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+
+      <ion-button (click)="changeLayout()">
+        <ion-icon src="assets/interface.svg">
+
+        </ion-icon>
+
+
+        <ion-select #S [(ngModel)]="sortby" value="new" okText="Okay" (ionChange)="SortByOrder(S.value)"
+          cancelText="Dismiss">
+          <ion-select-option value="old">Old</ion-select-option>
+          <ion-select-option value="new">Latest</ion-select-option>
+          <ion-select-option value="price_low">Price (Low to High)</ion-select-option>
+          <ion-select-option value="price_high">Price (High to Low)</ion-select-option>
+          <ion-select-option value="name_a_z">Name (A to Z)</ion-select-option>
+          <ion-select-option value="name_z_a">Name (Z to A)</ion-select-option>
+        </ion-select>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <!-- <ion-button (click)="changeLayout()">
+        <ion-icon name="ios-list" [name]="productView=='grid'? 'list' : 'apps'"></ion-icon>
+
+      </ion-button>
+      -->
+      <ion-button (click)="refresh()">
+        <ion-icon name="refresh"></ion-icon>
+      </ion-button>
+      <!-- <ion-menu-button (click)="openRightMenu()">
+        <ion-icon name="funnel"></ion-icon>
+      </ion-menu-button> -->
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

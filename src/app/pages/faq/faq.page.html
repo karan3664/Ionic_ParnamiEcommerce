@@ -1,0 +1,28 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-menu-button slot="start">
+      <ion-icon color="primary" name="menu"></ion-icon>
+    </ion-menu-button>
+
+    <ion-title color="primary">F A Q</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding *ngIf="data">
+  <ion-list *ngFor="let p of data" padding>
+
+    <ion-item lines="none">
+      <ion-label>
+        Q. {{p.faq_name}}
+      </ion-label>
+    </ion-item>
+    <ion-item>
+
+      <ion-label>
+        Ans. {{p.desc}}
+
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

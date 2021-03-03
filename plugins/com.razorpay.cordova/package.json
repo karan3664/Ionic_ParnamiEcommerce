@@ -1,0 +1,54 @@
+{
+  "_from": "git+https://github.com/razorpay/razorpay-cordova.git",
+  "_id": "com.razorpay.cordova@1.4.10",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/com.razorpay.cordova",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "git+https://github.com/razorpay/razorpay-cordova.git",
+    "rawSpec": "git+https://github.com/razorpay/razorpay-cordova.git",
+    "saveSpec": "git+https://github.com/razorpay/razorpay-cordova.git",
+    "fetchSpec": "https://github.com/razorpay/razorpay-cordova.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/razorpay/razorpay-cordova.git#066922ff6b0c491906d776c0f5f3c1e5bbad1aad",
+  "_spec": "git+https://github.com/razorpay/razorpay-cordova.git",
+  "_where": "/Volumes/D Drive/New Ionic Projects/Sales-Parnami-Ecommerce",
+  "author": {
+    "name": "Razorpay Developers",
+    "email": "developers@razorpay.com",
+    "url": "https://razorpay.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/razorpay/razorpay-cordova/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Cordova/Phonegap bindings for Razorpay's Mobile SDKs",
+  "homepage": "https://github.com/razorpay/razorpay-cordova#readme",
+  "keywords": [
+    "razorpay",
+    "ecosystem:cordova",
+    "cordova",
+    "phonegap",
+    "ionic",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-browser"
+  ],
+  "license": "ISC",
+  "main": "Readme.md",
+  "name": "com.razorpay.cordova",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/razorpay/razorpay-cordova.git"
+  },
+  "scripts": {},
+  "version": "1.4.10"
+}

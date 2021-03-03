@@ -1,0 +1,117 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-title color="primary">Edit Address</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon color="primary" slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="postData">
+  <ion-list>
+
+
+    <!-- <ion-item lines="none">
+      <ion-label position="stacked" color="dark">Name <ion-text color="danger">*
+        </ion-text>
+      </ion-label>
+      <ion-input type="text" autocomplete="off" color="dark" name="name" [(ngModel)]="postData.name" clearInput>
+      </ion-input>
+    </ion-item> -->
+
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="dark">Mobile Number 
+      </ion-label>
+      <ion-input type="text" autocomplete="off" color="dark" name="mobile_number" [(ngModel)]="postData.mobile_number"
+        clearInput>
+      </ion-input>
+    </ion-item>
+  
+  
+
+    <!-- <ion-item lines="none">
+      <ion-label position="stacked" color="dark">Email <ion-text color="danger">*
+        </ion-text>
+      </ion-label>
+      <ion-input type="text" autocomplete="off" color="dark" name="email" [(ngModel)]="postData.email" clearInput>
+      </ion-input>
+    </ion-item> -->
+    <ion-item lines="none">
+      <ion-label position="stacked" color="dark">Address <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input type="text" autocomplete="off" color="dark" name="address" [(ngModel)]="postData.address" clearInput>
+      </ion-input>
+
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="stacked" color="dark">Area <ion-text color="danger">*
+        </ion-text>
+      </ion-label>
+      <ion-input type="text" autocomplete="off" color="dark" name="locality" [(ngModel)]="postData.locality" clearInput>
+      </ion-input>
+    </ion-item>
+    <!-- <ion-item lines="none">
+      <ion-label position="stacked" color="dark">City <ion-text color="danger">*
+        </ion-text>
+      </ion-label>
+      <ion-input type="text" autocomplete="off" color="dark" name="city" [(ngModel)]="postData.city" clearInput>
+      </ion-input>
+    </ion-item> -->
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="dark">State <ion-text color="danger">*
+        </ion-text>
+      </ion-label>
+      <ion-select #S [(ngModel)]="SelectedState" placeholder="Select State" (ionChange)="SelectedStateList(S.value)" okText="Select"
+        cancelText="Dismiss">
+        <ion-select-option *ngFor="let sl of StateListItem" value="{{sl.id}}">
+          {{sl.state_name}}</ion-select-option>
+      </ion-select>
+
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="dark">City <ion-text color="danger">*
+        </ion-text>
+      </ion-label>
+      <ion-select #C [(ngModel)]="city" placeholder="Select City" (ionChange)="SelectedCityList(C.value)" okText="Select"
+        cancelText="Dismiss">
+        <ion-select-option *ngFor="let pp of CityListItem" value="{{pp.id}}">
+          {{pp.name}}</ion-select-option>
+      </ion-select>
+
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="dark">Landmark <ion-text color="danger">*
+        </ion-text>
+      </ion-label>
+      <ion-input type="text" autocomplete="off" color="dark" name="landmark" [(ngModel)]="postData.landmark" clearInput>
+      </ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="stacked" color="dark">Pincode <ion-text color="danger">*
+        </ion-text>
+      </ion-label>
+      <ion-input type="text" autocomplete="off" color="dark" name="pincode" [(ngModel)]="postData.pincode" clearInput>
+      </ion-input>
+    </ion-item>
+    <ion-item lines="none">
+
+      <ion-label position="stacked" color="dark">Alternate Phone 
+      </ion-label>
+      <ion-input type="text" autocomplete="off" color="dark" name="alt_phone" [(ngModel)]="postData.alt_phone"
+        clearInput></ion-input>
+    </ion-item>
+
+
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-button expand="full" (click)="SaveAddress()">
+    <ion-label color="light">Update Address</ion-label>
+  </ion-button>
+</ion-footer>

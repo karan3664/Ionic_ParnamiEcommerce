@@ -1,0 +1,29 @@
+.list{
+    // margin-top: 20px;
+    position: relative;
+    // display: flex;
+    // flex-wrap: nowrap;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    .scroll-item {
+        flex: 0 0 auto;
+    }
+    .title{
+        font-weight: bold;
+        color: black;
+        font-size: 0.8rem;
+        white-space: pre-wrap;
+        text-transform: capitalize;
+    }
+    .name{
+        color: darkgray;
+        font-size: 0.7rem;
+    }
+    .moreIcon{
+        position: absolute;
+        right: 0px;
+        top: 1px;
+    }
+}

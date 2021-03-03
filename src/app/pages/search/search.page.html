@@ -1,0 +1,65 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/home" routerDirection="backward">
+        <ion-icon slot="icon-only" src="assets/custom-icon-tc-shop/back.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title color="primary" class="ecom-title">Search</ion-title>
+    <ion-buttons slot="end">
+
+      <ion-button fill="clear" (click)="goToCartPage()">
+        <ion-icon class="cart-badge" name="cart-outline"></ion-icon>
+        <ion-badge>{{total_cart}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<div>
+  <ion-searchbar [(ngModel)]="SelectedFruit" (ngModelChange)="getItems($event)" (ionFocus)="checkFocus('true')">
+  </ion-searchbar>
+</div>
+<ion-content>
+
+
+  <div *ngFor="let item of dummy">
+    <ion-list lines="none">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-list *ngIf="showFruitList == true">
+    <ion-item *ngFor="let p of data" (click)="goToProductDetail(p.id)" routerDirection="forward">
+     <div style="padding: 10px; margin: 5px;">
+      <ion-avatar slot="start" class="animated flipInX delay-900ms" *ngIf="p.product_image !== null">
+        <img src="http://parnamib2b.com/public/product_images/{{p.product_image}}" />
+      </ion-avatar>
+      <ion-avatar slot="start" class="animated flipInX delay-900ms" *ngIf="p.product_image === null">
+        <img src="assets/logo.png" />
+      </ion-avatar>
+     </div>
+      <ion-label padding>
+        <h2>{{p.product_name}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+
+</ion-content>

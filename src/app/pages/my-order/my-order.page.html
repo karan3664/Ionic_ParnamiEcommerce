@@ -1,0 +1,85 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-menu-button slot="start">
+      <ion-icon color="primary" name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title color="primary">My Order</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content *ngIf="alldata">
+  <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
+
+
+
+  <div class="mainContent">
+    <div *ngIf="!data?.length || !data?.length || !data?.length" [style.backgroundImage]="'url(assets/nothing.jpg)'">
+    </div>
+    <div class="haveData">
+      
+      <div class="card_div" *ngFor="let item of data; let i = index" (click)="ViewInvoice(item.id)">
+
+
+        <div class="resto_detail">
+          <!-- <div class="back_image" [style.backgroundImage]="'url('+item.vid.cover+')'"></div> -->
+          <div>
+            <p><span>Order Number #{{item.id}}</span></p>
+            <!-- <ion-label class="res_name"></ion-label> -->
+
+          </div>
+        </div>
+
+        <div class="line_div"></div>
+
+        <div class="order_detail">
+          <ion-label class="head_gray">ITEMS</ion-label>
+          <div class="small_lbl">
+            <span *ngFor="let item of data[i].products; let k = index">{{getQty( item)}} X {{getProduct( item)}}
+              <span *ngIf="k !=item.length">,
+              </span>
+            </span>
+
+          </div>
+          <ion-label class="head_gray">ORDERED ON</ion-label>
+          <ion-label class="small_lbl">{{item.created_at}} </ion-label>
+          <ion-label class="head_gray">TOTAL AMOUNT</ion-label>
+          <ion-label class="small_lbl">₹ {{item.total_price}} </ion-label>
+        </div>
+
+        <div class="line_div"></div>
+
+        <div class="status_detail" *ngIf="item.delivety_status =='completed' || item.delivety_status == 'delivered'">
+          <div class="deliver_div">
+            Delivered
+          </div>
+        </div>
+        <div class="status_detail"
+          *ngIf="item.delivety_status =='Pending' || item.delivety_status == 'Delivered' ||  item.delivety_status == 'In Process' ">
+          <div class="deliver_div">
+            Your Order is {{item.delivety_status}}
+          </div>
+          <div class="repeat_div" style="color: green;">
+            View Order
+          </div>
+        </div>
+        <div class="status_detail"
+          *ngIf="item.status =='created' || item.delivety_status =='ongoing' || item.delivety_status === 'accepted'">
+          <div class="deliver_div">
+            Your Order is {{item.delivety_status}}
+          </div>
+          <div class="repeat_div" style="color: green;">
+            <ion-icon name="map-outline"></ion-icon>Track Order
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</ion-content>

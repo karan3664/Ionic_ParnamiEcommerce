@@ -1,0 +1,149 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-title color="primary">Shipping Address</ion-title>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/cart" routerDirection="backward">
+        <ion-icon slot="icon-only" src="assets/custom-icon-tc-shop/back.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content *ngIf="Data">
+
+
+
+
+  <ion-list>
+    <ion-radio-group allow-empty-selection="true" name="radio-group" (ionChange)="MakeDefault($event)">
+      <ion-list-header>
+        <ion-label style="align-items: center;">Select Default Address</ion-label>
+      </ion-list-header>
+      <div *ngFor="let list of Data">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="10">
+              <ion-item>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-label class="ion-text-wrap">{{list.name}}</ion-label>
+                    </ion-col>
+
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-label class="ion-text-wrap">{{list.mobile}}</ion-label>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <ion-label class="ion-text-wrap">{{list.address}}</ion-label>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+
+                <ion-radio slot="start" name="{{list}}" [value]="list"></ion-radio>
+
+              </ion-item>
+            </ion-col>
+            <ion-col size="2">
+              <ion-icon color="primary" style="width: 30px; height: 30px;" (click)="Edit(list.id)"
+                src="assets/edit.svg"></ion-icon>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+
+    </ion-radio-group>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="AddAddress()" color="light">
+      <ion-icon color="primary" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content> -->
+
+
+
+<ion-content>
+  <div class="group">
+    <div class="mainContent">
+      <ion-button (click)="AddAddress()" expand="block" fill="clear">
+        <ion-icon slot="start" name="add"></ion-icon>
+        Add Address
+      </ion-button>
+      <div class="noData" *ngIf="!dummy?.length && !Data?.length" [style.backgroundImage]="'url(assets/nothing.jpg)'">
+      </div>
+      <div *ngIf="!dummy?.length && !Data?.length" [style.backgroundImage]="'url(assets/nothing.jpg)'">
+      </div>
+      <div *ngFor="let item of dummy">
+        <ion-list lines="none" style="background: transparent;">
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div style="background: transparent;">
+        <ion-item lines="none" style="background: transparent;" *ngFor="let item of Data">
+
+          <ion-radio-group (ionChange)="MakeDefault($event)" style="background: transparent;">
+            <div>
+              <ion-list class="list">
+
+
+                <ion-item lines="none" style="background: transparent;">
+                  <!-- <ion-icon class="moreIcon" (click)="openMenu(item,$event)" name="ellipsis-vertical-outline">
+                </ion-icon> -->
+                  <ion-label class="title">{{item.address}} <br>
+                    <span class="name">{{item.land_mark}}</span></ion-label>
+                  <!-- <ion-label class="name"></ion-label> -->
+                  <ion-radio name="{{item}}" [value]="item" slot="start" mode="md"></ion-radio>
+
+                </ion-item>
+
+              </ion-list>
+
+            </div>
+
+          </ion-radio-group>
+          <ion-icon class="moreIcon" style="background: transparent;" slot="end" (click)="openMenu(item,$event)"
+            name="ellipsis-vertical-outline">
+          </ion-icon>
+
+        </ion-item>
+
+        <!-- <div class="list" *ngFor="let item of Data" scrollX="true">
+          <ion-label class="title">{{item.name}}</ion-label>
+          <ion-label class="name">{{item.mobile}} {{item.address}} {{item.land_mark}}
+          </ion-label>
+          <ion-icon class="moreIcon" (click)="openMenu(item,$event)" name="ellipsis-vertical-outline">
+          </ion-icon>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+
+
+<ion-footer *ngIf="Data?.length">
+  <ion-button (click)="SelectPayment()">Continue</ion-button>
+</ion-footer>

@@ -1,0 +1,7 @@
+{
+  "name": "ParnamiNew",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

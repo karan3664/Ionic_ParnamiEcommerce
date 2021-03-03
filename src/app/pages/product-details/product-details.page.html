@@ -1,0 +1,213 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/home" routerDirection="backward">
+        <ion-icon slot="icon-only" src="assets/custom-icon-tc-shop/back.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title color="primary">{{ProductName}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="goToCartPage()">
+        <ion-icon class="cart-badge" name="cart"></ion-icon>
+        <ion-badge color="secondary">{{total_cart}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content" *ngIf="gridVisiable">
+
+
+  <div class="icons">
+
+    <ion-icon color="primary" name="share-social-outline" (click)="share()"></ion-icon>
+    <ion-icon *ngIf="heart" name="heart" (click)="clickWishList()"></ion-icon>
+    <ion-icon *ngIf="!heart" name="heart-outline" (click)="clickWishList()"></ion-icon>
+    <!-- <ion-icon name="heart" class="icon_with_right_margin" (click)="clickWishList()" *ngIf="wishlist == 'true'">
+    </ion-icon>
+    <ion-icon *ngIf="wishlist == 'false'" s name="heart-outline" (click)="clickWishList()"
+      class="icon_with_right_margin">
+    </ion-icon> -->
+
+  </div>
+  <ion-slides class="product-slides" pager="true">
+    <ion-slide *ngFor="let slide of slides">
+      <div>
+        <img src="http://parnamib2b.com/public/product_images/{{slide.image_name}}" imageViewer>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <br>
+  <br>
+  <ion-grid class="product-detail-title ion-no-padding">
+    <ion-row>
+
+
+      <ion-col class="woo-price-group ion-no-padding" size="12">
+        <!-- <span class="woo-price">
+          MRP.  {{Data.price}}</span> -->
+
+        <ion-row>
+          <ion-col size="6">
+
+          </ion-col>
+          <!-- <ion-col *ngIf="Data[0].discounted_price != null" size="6">
+            <ion-button expand="outline" size="small">
+              <div *ngIf="Data[0].discount_res.dicount_type === 'Percentage'">
+                <ion-label class="heading_lbl">{{Data[0].discount_res.dicount}} %</ion-label>
+
+              </div>
+              <div *ngIf="Data[0].discount_res.dicount_type != 'Percentage'">
+                <ion-label class="heading_lbl"> Flat {{Data[0].discount_res.dicount}}</ion-label>
+
+              </div>
+
+            </ion-button>
+          </ion-col> -->
+        </ion-row>
+
+
+
+
+        <!-- <span class="product-instock">{{Data.stock}}
+        </span> -->
+      </ion-col>
+      <br>
+      <br>
+
+      <ion-col class="product-title ion-no-padding" size="12">
+        <h3 class="product-name">{{ProductName}}
+
+        </h3>
+
+        <div class="billing">
+          <div class="singleRow">
+            <ion-label class="headerTotal boldClass">{{'Packing'}}</ion-label>
+            <ion-label class="price">{{Data[0].packing}} </ion-label>
+          </div>
+          <div class="singleRow">
+            <ion-label class="headerTotal boldClass">Net Qty</ion-label>
+            <ion-label class="price"> {{Data[0].weight}} </ion-label>
+          </div>
+          <div class="singleRow">
+            <ion-label class="headerTotal boldClass">MRP</ion-label>
+            <ion-label class="price">
+              <p><span> ₹ {{Data.price}} </span></p>
+            </ion-label>
+          </div>
+          <div class="singleRow" *ngIf="Data[0].discounted_price != null">
+            <ion-label class="headerTotal boldClass">Your Price</ion-label>
+            <ion-label class="price">
+              <p> <span> ₹ {{Data[0].discounted_price}} </span></p>
+            </ion-label>
+          </div>
+
+          <div class="singleRow">
+            <ion-label class="headerTotal boldClass">Unit</ion-label>
+            <ion-label class="price">{{unit_name}} </ion-label>
+          </div>
+          <div class="singleRow">
+            <ion-label class="headerTotal boldClass">Master Carton</ion-label>
+            <ion-label class="price">{{master_carton}} </ion-label>
+          </div>
+        </div>
+
+
+
+
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" style="align-items: center;">
+              <ion-rating [(ngModel)]="rate" size="default" (ngModelChange)="onModelChange($event)">
+              </ion-rating>
+            </ion-col>
+            <ion-col size="6" style="align-items: center;">
+              <ion-button fill="clear" (click)="openReviewsPage()">
+                <ion-label> Write a review</ion-label>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+  <!-- <ion-grid class="product-description ion-no-padding">
+    <h2>Product Description</h2>
+    <div class="detail-para" [innerHTML]="Data.product_detail"></div>
+
+  </ion-grid> -->
+
+  <ion-grid no-padding class="product-detail-content animate-product ion-no-padding">
+    <ion-row no-padding>
+      <ion-col class="ion-no-padding" size="12">
+        <h3 class="related-item">Related Items</h3>
+        <div>
+          <ion-slides class="animated bounceInRight delay-900ms" [options]="sliderConfig">
+            <ion-slide *ngFor="let p of data">
+              <ion-card (click)="goToProductDetail(p.id)">
+                <img src="http://parnamib2b.com/public/product_images/{{p.default_image}}" />
+                <p>{{p.product_name}}</p>
+                <ion-row>
+                  <ion-col size="12">
+                    <div *ngIf="p.discounted_price === null">
+                      <p>MRP: ₹ {{p.price}}</p>
+                      <!-- <p><span><del>MRP. {{p.price}}</del> </span></p> -->
+                    </div>
+                    <div *ngIf="p.discounted_price != null">
+                      <p> MRP: ₹ {{p.price}}</p>
+                      <p>Your Price : ₹ {{p.discounted_price}}</p>
+                    </div>
+                  </ion-col>
+                  <!-- <ion-col *ngIf="p.discounted_price != null" size="6">
+                    <ion-button expand="outline" size="small">
+                      <div *ngIf="p.discount_res.dicount_type === 'Percentage'">
+                        <ion-label class="heading_lbl">{{p.discount_res.dicount}} %</ion-label>
+    
+                      </div>
+                      <div *ngIf="p.discount_res.dicount_type != 'Percentage'">
+                        <ion-label class="heading_lbl"> Flat {{p.discount_res.dicount}}</ion-label>
+    
+                      </div>
+    
+                    </ion-button>
+                  </ion-col> -->
+                </ion-row>
+                <div class="div-recent-btn">
+                  <ion-button color="primary"
+                    (click)="goToCartRelated(p.id,p.price,p.product_packages, p.discounted_price, p.discount_res)">
+                    <ion-label color="light">
+                      Add to cart
+                    </ion-label>
+                  </ion-button>
+                </div>
+
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-button (click)="goToProductPage()" fill="clear" class="icon-shop-more">
+                Shop More
+
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+
+
+              </ion-button>
+            </ion-slide>
+          </ion-slides>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-button (click)="goToCart()" *ngIf="gridVisiable">ADD TO CART </ion-button>
+</ion-footer>

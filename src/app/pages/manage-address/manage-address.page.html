@@ -1,0 +1,55 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start" color="primary">
+      <ion-button fill="clear" routerLink="/my-account" routerDirection="backward">
+        <ion-icon slot="icon-only" src="assets/custom-icon-tc-shop/back.svg"></ion-icon>
+      </ion-button>
+      <!-- <ion-back-button mode="md"></ion-back-button> -->
+    </ion-buttons>
+    <ion-title color="primary">Manage Address</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="group">
+    <div class="mainContent">
+      <ion-button (click)="addNew()" expand="block" fill="clear">
+        <ion-icon slot="start" name="add"></ion-icon>
+        Add Address
+      </ion-button>
+      <div class="noData" *ngIf="!dummy?.length && !myaddress?.length"
+        [style.backgroundImage]="'url(assets/nothing.jpg)'">
+      </div>
+      <div *ngFor="let item of dummy">
+        <ion-list lines="none">
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div>
+        <div class="list" *ngFor="let item of myaddress" scrollX="true">
+          <ion-label class="title">{{item.name}}</ion-label>
+          <ion-label class="name">{{item.mobile}} {{item.address}} {{item.land_mark}}
+          </ion-label>
+          <ion-icon class="moreIcon" (click)="openMenu(item,$event)" name="ellipsis-vertical-outline">
+          </ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

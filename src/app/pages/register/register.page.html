@@ -1,0 +1,71 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-title color="primary">Register</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon color="primary" slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content no-padding no-margin class="MainContent">
+
+
+
+  <!-- <img alt="logo" src="assets/icon.png" /> -->
+
+  <form>
+    <div>
+      <ion-card>
+
+
+        <ion-item style="margin: 10px;">
+
+          <ion-input type="text" autocomplete="off" placeholder="Name" name="name" color="dark"
+            [(ngModel)]="postData.name" clearInput></ion-input>
+        </ion-item>
+        <ion-item style="margin: 10px;">
+
+          <ion-input type="text" autocomplete="off" placeholder="Email" name="email" color="dark"
+            [(ngModel)]="postData.email" clearInput></ion-input>
+        </ion-item>
+        <ion-item style="margin: 10px;">
+          <ion-input type="password" autocomplete="off" placeholder="Password" name="password" color="dark"
+            [(ngModel)]="postData.password" clearInput>
+          </ion-input>
+        </ion-item>
+        <ion-item style="margin: 10px;">
+
+          <ion-input type="password" autocomplete="off" placeholder="Confirm Password" name="password_confirmation"
+            color="dark" [(ngModel)]="postData.password_confirmation" clearInput></ion-input>
+        </ion-item>
+        <ion-item style="margin: 10px;">
+
+          <ion-input type="tel" autocomplete="off" maxlength="10" placeholder="Phone" name="phone" color="dark"
+            [(ngModel)]="postData.phone" clearInput></ion-input>
+        </ion-item>
+        <ion-item style="margin: 10px;">
+
+          <ion-input type="text" autocomplete="off" placeholder="Address" name="address" color="dark"
+            [(ngModel)]="postData.address" clearInput></ion-input>
+        </ion-item>
+        <ion-item style="margin: 10px;">
+
+          <ion-input type="text" autocomplete="off" placeholder="Business Name" name="business_name" color="dark"
+            [(ngModel)]="postData.business_name" clearInput></ion-input>
+        </ion-item>
+        <ion-button style="margin: 20px;" expand="full" shape="round" margin-top="10px" color="primary"
+          (click)="formLogin()">
+          <ion-label color="light">
+            Register
+          </ion-label>
+        </ion-button>
+      </ion-card>
+    </div>
+
+
+  </form>
+
+</ion-content>

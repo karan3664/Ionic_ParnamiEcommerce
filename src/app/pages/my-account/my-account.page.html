@@ -1,0 +1,91 @@
+<!-- <ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-menu-button slot="start">
+      <ion-icon color="primary" name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title color="primary">My Account</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+
+  <ion-item style="margin: 10px;">
+    <ion-label position="stacked" color="dark">Name <ion-text color="danger">*
+      </ion-text>
+    </ion-label>
+    <ion-input type="text" autocomplete="off" placeholder="Name" name="name" color="dark" [(ngModel)]="postData.name"
+      clearInput></ion-input>
+  </ion-item>
+
+
+  <ion-item style="margin: 10px;">
+    <ion-label position="stacked" color="dark">Phone <ion-text color="danger">*
+      </ion-text>
+    </ion-label>
+    <ion-input type="tel" autocomplete="off"  maxlength="10" placeholder="Phone" name="phone" color="dark" [(ngModel)]="postData.phone"
+      clearInput></ion-input>
+  </ion-item>
+  <ion-item style="margin: 10px;">
+    <ion-label position="stacked" color="dark">Address <ion-text color="danger">*
+      </ion-text>
+    </ion-label>
+    <ion-input type="text" autocomplete="off" placeholder="Address" name="address" color="dark"
+      [(ngModel)]="postData.address" clearInput></ion-input>
+  </ion-item>
+  <ion-item style="margin: 10px;">
+    <ion-label position="stacked" color="dark">Business Name <ion-text color="danger">*
+      </ion-text>
+    </ion-label>
+    <ion-input type="text" autocomplete="off" placeholder="Business Name" name="business_name" color="dark"
+      [(ngModel)]="postData.business_name" clearInput></ion-input>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-button (click)="UpdateProfile()">Update</ion-button>
+</ion-footer> -->
+
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start" >
+      <ion-menu-button autoHide="false" color="primary"></ion-menu-button>
+    </ion-buttons>
+    <ion-label color="primary">
+      My Account
+    </ion-label>
+
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="main_content_div">
+    <div class="back_image" [style.backgroundImage]="'url(assets/splash.png)'">
+    </div>
+    <!-- <div class="white_div" [style.backgroundImage]="'url(assets/icon.png)'"></div> -->
+
+    <div class="content_div">
+      <ion-label class="usernane">{{postData.name}}</ion-label>
+
+      <ion-label class="location">
+        {{postData.email}}
+      </ion-label>
+
+
+      <div class="flex_div">
+        <!-- <ion-label (click)="goToselectRestaurants()">Add Review</ion-label> -->
+        <ion-label (click)="goToEditProfile()">Edit Profile</ion-label>
+        <ion-label (click)="goToAddress()">Manage Address</ion-label>
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-menu-button slot="start">
+      <ion-icon color="primary" name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title color="primary" class="ecom-title">My Wish List</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="goToSearchPage()">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="goToCartPage()">
+        <ion-icon class="cart-badge" name="cart-outline"></ion-icon>
+        <ion-badge>{{total_cart}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+  <div no-padding>
+
+    <ion-grid no-padding *ngIf="gridVisiable">
+      <ion-row no-padding>
+        <ion-col size="6" style="text-align: center;" *ngFor="let p of products" no-padding>
+
+          <ion-card>
+            <img src="http://parnamib2b.com/public//product_images/{{p.default_image}}"
+              (click)="goToProductDetail(p.id)" />
+            <p>{{p.product_name}}</p>
+            <p><span> MRP.  {{p.price}}</span></p>
+            <div class="div-recent-btn">
+              <ion-button color="primary" (click)="removeItem(p.id)">
+                <ion-label color="light">
+                  Remove
+                </ion-label>
+              </ion-button>
+            </div>
+          </ion-card>
+
+        </ion-col>
+
+
+      </ion-row>
+    </ion-grid>
+
+    <!-- when no data found -->
+    <ion-grid class="topp" no-padding *ngIf="!gridVisiable">
+      <ion-row no-padding>
+        <ion-col size="12" no-padding>
+          <ion-icon name="heart"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row no-padding>
+        <ion-col size="12" no-padding>
+          <h4>Your Wishlist is empty</h4>
+        </ion-col>
+      </ion-row>
+      <ion-row no-padding>
+        <ion-col size="12" no-padding>
+          <p>Continue shopping</p>
+        </ion-col>
+      </ion-row>
+      <ion-row no-padding>
+        <ion-col size="12" no-padding>
+          <ion-button (click)="openProductsPage()">Explore</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

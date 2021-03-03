@@ -1,0 +1,317 @@
+<ion-header tappable>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" routerLink="/my-order/:price" routerDirection="backward">
+        <ion-icon slot="icon-only" src="assets/custom-icon-tc-shop/back.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title color="primary">View Invoice</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content class="order-content" *ngIf="Data">
+  <ion-grid>
+    <ion-row style="border: 1px solid #e2e2e2; margin: 10px;">
+      <ion-col size="6">
+        <img src="assets/icon.png" style="width: 100px; height: 100px;" />
+      </ion-col>
+
+      <ion-col size="6" style="text-align: end;">
+        <div>
+          <ion-label style="font-weight: bold;"> Order # :<span class="prise_lbl" style="font-weight: normal;">
+              {{orderid}} </span>
+          </ion-label>
+          <br>
+          <ion-label style="font-weight: bold;"> Order Date :<span class="prise_lbl" style="font-weight: normal;">
+              {{created_at}} </span>
+          </ion-label>
+
+        </div>
+      </ion-col>
+
+    </ion-row>
+    <div class="line_div"></div>
+
+    <ion-row style="margin: 10px;">
+      <ion-col size="6" style="text-align: start; border: 1px solid #e2e2e2;">
+        Billed To :
+        <div>
+          <p>{{business_name}}</p>
+          <p>{{mobile}}</p>
+          <p>{{address}} , {{lang_mark}}</p>
+          <p>{{city}} , {{state}}</p>
+
+        </div>
+      </ion-col>
+
+      <ion-col size="6" style="text-align: end; border: 1px solid #e2e2e2;">
+        Order Details :
+        <div>
+          <p></p>
+          <ion-label style="font-weight: bold;"> Order Date :<span class="prise_lbl" style="font-weight: normal;">
+              {{created_at}} </span>
+          </ion-label>
+          <br>
+
+          <ion-label style="font-weight: bold;"> Delivery Status :<span class="prise_lbl" style="font-weight: normal;">
+              {{DeliveryStatus}} </span>
+          </ion-label>
+          <br>
+          <ion-label style="font-weight: bold;"> Sales Person name :<span class="prise_lbl"
+              style="font-weight: normal;">
+              {{sales_person_name}} </span>
+          </ion-label>
+
+
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin: 10px;">
+      <ion-col size="6" style="border: 1px solid #e2e2e2; text-align: start;">
+        Payment Details :
+        <div>
+          <p></p>
+          <!-- <p style="font-weight: bold;">Payment Status :</p>{{payment_status}} -->
+          <!-- <p style="font-weight: bold;"></p> -->
+          <ion-label class="small_lbl" style="font-weight: bold;">Payment Status :
+            <span style="font-weight: normal;">{{payment_status}}</span>
+          </ion-label>
+          <br>
+          <ion-label class="small_lbl" style="font-weight: bold;">Payment Method :
+            <span *ngIf="PaymentType =='cash_on_delivery'" style="font-weight: normal;">Cash On Delivery</span>
+            <span *ngIf="PaymentType =='online'" style="font-weight: normal;">Razor Pay Online</span>
+          </ion-label>
+        </div>
+      </ion-col>
+
+      <ion-col size="6" style="border: 1px solid #e2e2e2; text-align: end;">
+        Dispatch Details :
+        <div>
+          <p></p>
+          <ion-label style="font-weight: bold;"> Transporter : <span class="prise_lbl" style="font-weight: normal;">
+              {{Transporter}}
+            </span>
+          </ion-label>
+          <br>
+          <ion-label style="font-weight: bold;"> Delivery Option : <span class="prise_lbl" style="font-weight: normal;">
+              {{DeliveryOption}}
+            </span>
+          </ion-label>
+          <br>
+          <ion-label style="font-weight: bold;"> Freight : <span class="prise_lbl" style="font-weight: normal;">
+              {{Freight}} </span>
+          </ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div class="line_div"></div>
+    <ion-row style="margin: 10px;">
+      <ion-col size="12" style="border: 1px solid #e2e2e2; text-align: start;">
+        Notes:
+        <div>
+          <p></p>
+
+          <ion-label class="small_lbl" style="font-weight: bold;">
+            <span style="font-weight: normal;">{{notes}}</span>
+          </ion-label>
+
+        </div>
+      </ion-col>
+
+
+    </ion-row>
+    <div class="line_div"></div>
+    <ion-row>
+      <ion-col size="2" style="text-align: center;">
+        <ion-label style="font-weight: bold;">#</ion-label>
+      </ion-col>
+      <ion-col size="2" style="text-align: center;">
+        <ion-label style="font-weight: bold;">Product</ion-label>
+      </ion-col>
+      <ion-col size="2" style="text-align: center;">
+        <ion-label style="font-weight: bold;">Unit</ion-label>
+      </ion-col>
+      <ion-col size="2" style="text-align: center;">
+        <ion-label style="font-weight: bold;">Quantity</ion-label>
+      </ion-col>
+      <ion-col size="2" style="text-align: center;">
+        <ion-label style="font-weight: bold;">Rate</ion-label>
+      </ion-col>
+      <ion-col size="2" style="text-align: center;">
+        <ion-label style="font-weight: bold;">Amount</ion-label>
+      </ion-col>
+    </ion-row>
+    <div class="line_div"></div>
+
+    <div *ngFor="let item of Data; let i = index">
+      <ion-row>
+        <ion-col size="2" style="text-align: center;">
+          <ion-label style="font-weight: normal;">{{i+1}}</ion-label>
+        </ion-col>
+        <ion-col size="2" style="text-align: center;">
+          <ion-label style="font-weight: normal;">{{item.product_detail.product_name}}</ion-label>
+        </ion-col>
+        <ion-col size="2" style="text-align: center;">
+          <ion-label style="font-weight: normal;"> {{ item.product_detail.unit_name }}</ion-label>
+        </ion-col>
+        <ion-col size="2" style="text-align: center;">
+          <ion-label style="font-weight: normal;">{{item.data.total_qty}}</ion-label>
+        </ion-col>
+        <ion-col size="2" style="text-align: center;">
+          <ion-label style="font-weight: normal;">
+            ₹ {{item.data.price}}
+
+          </ion-label>
+        </ion-col>
+        <ion-col size="2" style="text-align: center;">
+          <ion-label style="font-weight: normal;">₹ {{item.data.total_price}} </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-label style="font-weight: bold;" *ngIf="item.data.notes !== ''">Notes : {{item.data.notes}} </ion-label>
+      <div class="line_div"></div>
+    </div>
+
+    <div class="line_div"></div>
+
+    <ion-row>
+      <ion-col style="text-align: end;">
+        <ion-label style="font-weight: bold;"> Sub Total Amount :<span class="prise_lbl" style="font-weight: normal;">
+            ₹ {{SubTotalPrice}} </span>
+        </ion-label>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: end;">
+        <ion-label style="font-weight: bold;"> Grand Total :<span class="prise_lbl" style="font-weight: normal;">
+            ₹ {{Total}} </span>
+        </ion-label>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<!-- 
+<ion-content class="order-content" *ngIf="Data">
+
+  <div class="main_content_div">
+    <ion-label class="header_lbl">Order Summary</ion-label>
+    
+    <div class="line_div"></div>
+
+
+    <div class="flex_div">
+      <ion-label class="res_name" style="margin-top: 0px;">Your Order</ion-label>
+    
+    </div>
+
+    <div class="line_div"></div>
+
+
+
+
+
+    <span *ngFor="let item of Data">
+      <div class="card_div">
+        <div class="upper_div">
+          <ion-label style="margin-left: 10px;">{{item.product_detail.product_name}}</ion-label>
+        </div>
+        <div class="lower_div">
+          <span class="rate_lbl">{{item.data.qty}}</span>
+          <ion-label>
+            1 {{getpackagename(item.data)}} X {{getpackageqty(item.data)}} <span>
+              {{ getunit_name(item.data) }} </span> X
+            <span *ngIf="item.data.package_id === null">
+              ₹ {{item.data.price}}
+            </span>
+            <span *ngIf="item.data.package_id != null">
+              ₹ {{getoriginal_unit_discounted_price(item.data)}}
+            </span>
+          </ion-label>
+
+
+
+          <ion-label> ₹ {{item.data.qty  *  item.data.price}} </ion-label>
+        </div>
+      </div>
+      <div class="line_div"></div>
+    </span>
+
+    <ion-label style="margin-top: 5px; font-weight: 600px;">Item Total <span class="prise_lbl">Amount : ₹
+        {{SubTotalPrice}}
+      </span>
+    </ion-label>
+    <ion-label style="margin-top: 5px; font-weight: 600px;" *ngIf="DiscountValue">Coupon Discout <span
+        class="prise_lbl">Amount : ₹ {{DiscountValue}} </span>
+    </ion-label>
+
+
+    <ion-label style="margin-top: 5px; font-size: 14px"> Total <span class="prise_lbl">Amount : ₹ {{Total}} </span>
+    </ion-label>
+    <div class="line_div"></div>
+    <div *ngIf="transporter_id != null">
+      <ion-label class="res_name">Transporter Detail</ion-label>
+      <div class="line_div"></div>
+  
+      <ion-label style="margin-top: 5px; font-size: 14px"> Transporter <span class="prise_lbl"> {{Transporter}} </span>
+      </ion-label>
+      <ion-label style="margin-top: 5px; font-size: 14px"> Delivery Option <span class="prise_lbl"> {{DeliveryOption}}
+        </span>
+      </ion-label>
+      <ion-label style="margin-top: 5px; font-size: 14px"> Freight <span class="prise_lbl"> {{Freight}} </span>
+      </ion-label>
+      <div class="line_div"></div>
+    </div>
+  
+   
+
+    <ion-label class="res_name">Order Detail</ion-label>
+    <div class="line_div"></div>
+
+    <ion-label class="head_gray">Order Number</ion-label>
+    <ion-label class="small_lbl">{{OrderID}}</ion-label>
+    <ion-label class="head_gray">Payment</ion-label>
+    <ion-label class="small_lbl">{{payment_status}} : <span *ngIf="PaymentType =='cash_on_delivery'">COD</span>
+      <span *ngIf="PaymentType =='credit'">Credit</span>
+      <span *ngIf="PaymentType =='online'">Razor Pay Online</span>
+    </ion-label>
+    <ion-label class="head_gray">Date</ion-label>
+    <ion-label class="small_lbl">{{created_at}}</ion-label>
+    <ion-label class="head_gray">Deliver to</ion-label>
+    <ion-label class="small_lbl" *ngIf="address">
+      {{address}}
+      {{lang_mark}}
+      {{city}} {{state}} {{pincode}}
+
+    </ion-label>
+
+    <div class="line_div"></div>
+
+
+  </div>
+
+</ion-content> -->
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="btn_div" *ngIf="order_status == null">
+
+      <ion-button *ngIf="DeliveryStatus === 'Pending' || DeliveryStatus === 'In Process'" size="small" class="reject"
+        (click)="CancelOrder()">
+        <ion-label color="light">
+          Cancel Order
+        </ion-label>
+      </ion-button>
+    </div>
+    <div class="btn_div" *ngIf="order_status != null">
+
+      <ion-button size="small" class="reject">
+        <ion-label color="light">
+          Order Canceled
+        </ion-label>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

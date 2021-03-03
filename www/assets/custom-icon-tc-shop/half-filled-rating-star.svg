@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="15" height="14.25" viewBox="0 0 15 14.25">
+  <g id="half-filled-rating-star" transform="translate(0 -12.75)">
+    <g id="star-half" transform="translate(0 12.75)">
+      <path id="Path_2555" data-name="Path 2555" d="M15,18.183,9.607,17.72,7.5,12.75,5.393,17.72,0,18.183H0l4.091,3.545L2.865,27,7.5,24.2h0L12.135,27l-1.226-5.272ZM7.5,22.8V15.821l1.283,3.027,3.285.282L9.576,21.289l.747,3.211Z" transform="translate(0 -12.75)"/>
+    </g>
+  </g>
+</svg>
